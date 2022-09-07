@@ -1,3 +1,4 @@
+/2022.09.07 adding comments for q code
 /2022.01.06 changing quote::Bid_Price from real to float
 /2020.06.12 support taq 3.3, add field to MASTER, no change needed
 /2020.04.15 support taq 3.2, add field to MASTER, no change needed
@@ -7,6 +8,7 @@
 /2016.10.18 support taq2.2a
 / http://www.nyxdata.com/doc/247075
 
+/ Checking kdb+ version 
 if[(3.4>.z.K)|2016.09.26>.z.k;-1"kdb+ 3.4 more recent than 2016.09.26 required";exit 1];
 k)o:.Q.opt .z.x;F:F@&(_F:!src:`$":",*.Q.x)like;S:`/:src,;dst:`:tq;D:"I"$-8#$*F;
 if[1>count .Q.x;-1">q ",(string .z.f)," SRC";exit 1];
@@ -18,6 +20,7 @@ k)adsftg2:{[a;dpt;xom;f;tw;g] d::*dpt;x::*xom
   t:.Q.en[d]@+g f!.:+s16 -1_tw 0:0N!x
   .[p;();wf;t];if[wp;psym p]}
 
+/ Defining the variable foo2
 k)foo2:{[t;tf;tt;tg;x]adsftg2[0;(dst;"D"$-8#$x;t);(S x;0;0);tf;tt;tg]}
 
 / 2.2
